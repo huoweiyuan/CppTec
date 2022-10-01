@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.23)
+project(CppTec)
+
+#set(CMAKE_CXX_STANDARD 14)
+
+SET(CMAKE_BUILD_TYPE Debug)
+
+ADD_SUBDIRECTORY(Test)
+ADD_SUBDIRECTORY(${PROJECT_SOURCE_DIR}/Tec/Cmake)
