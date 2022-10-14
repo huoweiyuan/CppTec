@@ -10,26 +10,60 @@
 #include <unistd.h>
 #include <sys/stat.h>
 
+template<typename... ParamType>
+void Daemonize(std::function<void(const char *err_msg)> error_callback,
+               std::function<void(ParamType...)> daemonize_main, ParamType&&... params)
+{
+  if (!error_callback) {
+    error_callback = [] (const char *err_msg) {
+      std::cerr << err_msg << std::endl;
+    };
+  }
+
+  if (!daemonize_main) {
+    error_callback("Main function is empty!");
+  }
+
+  // Create daemonize process
+  pid_t pid = -1;
+  if (-1 == (pid = fork())) {
+    error_callback("Fork child process error!");
+  }
+
+  // Father process exit
+  if (pid > 0) {
+    exit(0);
+  }
+
+  // Create new session
+  if (-1 == (pid = setsid())) {
+    error_callback("Create new session error!");
+  }
+
+  umask(0);
+
+  daemonize_main(std::forward<ParamType>(params)...);
+}
+
 template<typename RetType, typename... ParamType>
 RetType Daemonize(std::function<void(const char *err_msg)> error_callback,
                   std::function<RetType(ParamType...)> daemonize_main, ParamType&&... params)
 {
-  std::function<void(const char *msg)> _error_func;
-  error_callback ?
-    _error_func = error_callback :
-    _error_func = [] (const char *err_msg) {
+  if (!error_callback) {
+    error_callback = [] (const char *err_msg) {
       std::cerr << err_msg << std::endl;
-  };
+    };
+  }
 
   if (!daemonize_main) {
-    _error_func("Main function is empty!");
+    error_callback("Main function is empty!");
     return -1;
   }
 
   // Create daemonize process
   pid_t pid = -1;
   if (-1 == (pid = fork())) {
-    _error_func("Fork child process error!");
+    error_callback("Fork child process error!");
     return -1;
   }
 
@@ -40,7 +74,7 @@ RetType Daemonize(std::function<void(const char *err_msg)> error_callback,
 
   // Create new session
   if (-1 == (pid = setsid())) {
-    _error_func("Create new session error!");
+    error_callback("Create new session error!");
     return -1;
   }
 
