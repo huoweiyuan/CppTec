@@ -18,6 +18,6 @@ class B : public A
 
 int main() {
   B b;
-  b.func();
+  b.func(); // 子类可以调用父类方法
   return 0;
 }
