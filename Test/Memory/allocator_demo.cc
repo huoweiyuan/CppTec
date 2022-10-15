@@ -6,43 +6,45 @@
 #include <string.h>
 using namespace std;
 using namespace zy;
+//
+//class TestAllocator : public Allocator
+//{
+// private:
+//  const int ALLOC_HEAD_SIZE = sizeof(size_t);
+//  const int READ_ALLOC_SIZE_OFFSET = -(ALLOC_HEAD_SIZE);
+//
+// public:
+//  char* alloc_memory(std::size_t size)
+//  {
+//    size_t _alloc_size = size + ALLOC_HEAD_SIZE;
+//    void *ptr = ::malloc(_alloc_size);
+//    *static_cast<size_t*>(ptr) = _alloc_size;
+//    return static_cast<char*>(ptr) + ALLOC_HEAD_SIZE;
+//  }
+//
+//  char* realloc_memory(void *ptr, size_t size)
+//  {
+//    if (ptr != nullptr)
+//    {
+//      ptr = static_cast<char*>(ptr) + READ_ALLOC_SIZE_OFFSET;
+//    }
+//
+//    size_t _realloc_size = size + ALLOC_HEAD_SIZE;
+//    ptr = ::realloc(ptr, _realloc_size);
+//    *static_cast<size_t*>(ptr) = _realloc_size;
+//    return static_cast<char*>(ptr) + ALLOC_HEAD_SIZE;
+//  }
+//
+//  void free_memory(void *ptr)
+//  {
+//    ::free(static_cast<char*>(ptr) + READ_ALLOC_SIZE_OFFSET);
+//  }
+//
+//};
 
-class TestAllocator : public Allocator
-{
- private:
-  const int ALLOC_HEAD_SIZE = sizeof(size_t);
-  const int READ_ALLOC_SIZE_OFFSET = -(ALLOC_HEAD_SIZE);
+//TestAllocator *g_allocator = new TestAllocator();
 
- public:
-  char* alloc_memory(std::size_t size)
-  {
-    size_t _alloc_size = size + ALLOC_HEAD_SIZE;
-    void *ptr = ::malloc(_alloc_size);
-    *static_cast<size_t*>(ptr) = _alloc_size;
-    return static_cast<char*>(ptr) + ALLOC_HEAD_SIZE;
-  }
-
-  char* realloc_memory(void *ptr, size_t size)
-  {
-    if (ptr != nullptr)
-    {
-      ptr = static_cast<char*>(ptr) + READ_ALLOC_SIZE_OFFSET;
-    }
-
-    size_t _realloc_size = size + ALLOC_HEAD_SIZE;
-    ptr = ::realloc(ptr, _realloc_size);
-    *static_cast<size_t*>(ptr) = _realloc_size;
-    return static_cast<char*>(ptr) + ALLOC_HEAD_SIZE;
-  }
-
-  void free_memory(void *ptr)
-  {
-    ::free(static_cast<char*>(ptr) + READ_ALLOC_SIZE_OFFSET);
-  }
-
-};
-
-TestAllocator *g_allocator = new TestAllocator();
+Allocator *g_allocator = new Allocator();
 
 
 class Test_ref
