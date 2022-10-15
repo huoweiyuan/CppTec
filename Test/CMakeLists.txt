@@ -18,8 +18,9 @@ TARGET_INCLUDE_DIRECTORIES(zycontainer PUBLIC ../Lib/Container ../Lib/Tool)
 TARGET_SOURCES(zycontainer PUBLIC Container/main.cc)
 
 add_executable(zypool "")
-TARGET_INCLUDE_DIRECTORIES(zypool PUBLIC ../Lib/Pool ../Lib/Tool)
+TARGET_INCLUDE_DIRECTORIES(zypool PUBLIC ../Lib/Pool ../Lib/Tool ../Lib/Memory)
 TARGET_SOURCES(zypool PUBLIC Pool/main.cc)
+TARGET_LINK_LIBRARIES(zypool PUBLIC pthread)
 
 ADD_EXECUTABLE(thrd_timeout "")
 TARGET_SOURCES(thrd_timeout PUBLIC thread_timeout/thread_timeout.cc)
