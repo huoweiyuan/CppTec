@@ -8,10 +8,10 @@
 using namespace std;
 zy::Allocator *g_alloc = new zy::Allocator();
 
-int test(int time) {
+void test(int time) {
 //  std::this_thread::sleep_for(std::chrono::seconds(time));
   cout << "test " << time << endl;
-  return time;
+//  return time;
 }
 
 void start_thrd(zy::ThrdPool *pool) {
@@ -35,12 +35,14 @@ int main()
   pool1->exec([&pool] {
     if (!pool->isTerminate()) return;
     std::this_thread::sleep_for(std::chrono::seconds(1));
+    cout << "start " << endl;
     pool->start();
   });
 
   pool1->exec([&pool] {
     if (pool->isTerminate()) return;
     std::this_thread::sleep_for(std::chrono::seconds(2));
+    cout << "stop " << endl;
     pool->stop();
   });
 
@@ -55,7 +57,8 @@ int main()
 
 //  pool->start();
   for (int i = 0; i < 1000; ++i) {
-    std::future<int> ret = pool->exec(1, test, i);
+    auto ret = pool->exec(1, test, i);
+    ret.get();
   }
 
   pool1->stop();
