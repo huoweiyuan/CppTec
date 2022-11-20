@@ -10,6 +10,10 @@ class A
   void show() const {
     cout << "A" << endl;
   }
+
+  ~A() {
+    cout << "~A" << endl;
+  }
 };
 
 class B {

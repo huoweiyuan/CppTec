@@ -55,7 +55,6 @@ int main()
 
   pool1->start();
 
-//  pool->start();
   for (int i = 0; i < 1000; ++i) {
     auto ret = pool->exec(1, test, i);
     ret.get();
@@ -64,20 +63,5 @@ int main()
   pool1->stop();
   pool->stop();
 
-//  pool->stop();
-
-//  int r = 0;
-//  while ((r = pool->wait(1))) {
-//    cout << "timeout " << r << endl;
-//    if (pool->isTerminate()) {
-//      pool->start();
-//    }
-//  }
-//  try {
-//    cout << "timeout " << pool->wait(1000) << endl;
-//    cout << ret.get() << endl;
-//  } catch (std::future_error &e) {
-//    cout << "catch error:" << e.code() << "," << e.what() << endl;
-//  }
   return 0;
 }
