@@ -1,0 +1,8 @@
+enum class {A,B} Test;
+
+
+int main(int argc, char **argv)
+{
+  
+  switch ()
+}

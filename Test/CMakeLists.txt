@@ -28,3 +28,4 @@ TARGET_LINK_LIBRARIES(thrd_timeout PUBLIC pthread)
 
 add_executable(test1 ../Tec/继承/子类父类方法.cc)
 add_executable(Deamon Deamon/Deamon.cc)
+add_executable(enumclass Cpp/enumclass.cc)
