@@ -34,3 +34,7 @@ add_executable(singleton Tool/singleton.cc)
 add_executable(thread Thread/main.cc)
 TARGET_INCLUDE_DIRECTORIES(thread PUBLIC ../Lib/Thread)
 TARGET_LINK_LIBRARIES(thread PUBLIC pthread)
+
+add_executable(timer Tool/timer.cc)
+TARGET_INCLUDE_DIRECTORIES(timer PUBLIC ../Lib/Tool ../Lib/Thread)
+TARGET_LINK_LIBRARIES(timer PUBLIC pthread)
