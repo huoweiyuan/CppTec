@@ -1,4 +1,4 @@
-#include "zy_singleton.h"
+#include "zySingleton.h"
 #include <iostream>
 
 using namespace std;

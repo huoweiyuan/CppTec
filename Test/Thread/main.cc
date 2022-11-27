@@ -1,4 +1,4 @@
-#include "Thread.h"
+#include "zyThread.h"
 #include <iostream>
 
 using namespace std;

@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "zy_thrd_pool.h"
-#include "zy_allocator.h"
+#include "zyThrdPool.h"
+#include "zyAllocator.h"
 using namespace std;
 zy::Allocator *g_alloc = new zy::Allocator();
 
