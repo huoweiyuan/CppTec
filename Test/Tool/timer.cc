@@ -4,7 +4,7 @@
 using namespace std;
 using namespace zy::tool;
 
-class TimerTest : public Timer
+class TimerTest : public TimerImpl
 {
   void testA()
   {
@@ -23,7 +23,7 @@ class TimerTest : public Timer
 
  public:
   TimerTest()
-    : Timer(1000)
+    : TimerImpl(1000)
   {
     setTimer(1000, &TimerTest::testA, this);
     setTimer(2000, &TimerTest::testB, this);
@@ -31,7 +31,7 @@ class TimerTest : public Timer
   }
 };
 
-class TimerTest2 : public Timer
+class TimerTest2 : public TimerImpl
 {
   void testA()
   {
@@ -49,7 +49,7 @@ class TimerTest2 : public Timer
   }
  public:
   TimerTest2()
-    : Timer(-1)
+    : TimerImpl(-1)
   {
     setTimer(1000, &TimerTest2::testA, this);
     setTimer(2000, &TimerTest2::testB, this);
@@ -67,8 +67,12 @@ class TimerTest2 : public Timer
 
 int main(int argc, char **argv)
 {
-  TimerTest2 test;
+  TimerTest test;
   test.start();
   test.join();
+  
+  // TimerTest2 test;
+  // test.start();
+  // test.join();
   return 0;
 }
