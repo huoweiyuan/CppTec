@@ -8,17 +8,17 @@ class TimerTest : public Timer
 {
   void testA()
   {
-    cout << "testA" << endl;
+    cout << "testA " << time(nullptr) << endl;
   }
 
   void testB()
   {
-    cout << "testB" << endl;
+    cout << "testB " << time(nullptr) << endl;
   }
 
   void testC()
   {
-    cout << "testC" << endl;
+    cout << "testC " << time(nullptr) << endl;
   }
 
  public:
@@ -31,9 +31,43 @@ class TimerTest : public Timer
   }
 };
 
+class TimerTest2 : public Timer
+{
+  void testA()
+  {
+    cout << "testA " << time(nullptr) << endl;
+  }
+
+  void testB()
+  {
+    cout << "testB " << time(nullptr) << endl;
+  }
+
+  void testC()
+  {
+    cout << "testC " << time(nullptr) << endl;
+  }
+ public:
+  TimerTest2()
+    : Timer(-1)
+  {
+    setTimer(1000, &TimerTest2::testA, this);
+    setTimer(2000, &TimerTest2::testB, this);
+    setTimer(3000, &TimerTest2::testC, this);
+  }
+
+  int thrdRoutine(void) override
+  {
+    //
+    cout << "DO MY THINGS" << endl;
+    checkTimeExpire();
+    return 0;
+  }
+};
+
 int main(int argc, char **argv)
 {
-  TimerTest test;
+  TimerTest2 test;
   test.start();
   test.join();
   return 0;
