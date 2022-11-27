@@ -34,10 +34,34 @@ class ThreadImpl : public Thread
   }
 };
 
+
+class ThreadImpl2
+{
+ public:
+  ThreadImpl2() = default;
+  ThreadImpl2(Thread *thread)
+  {
+    thread->execRoutine(&ThreadImpl2::testA, this);
+  }
+
+ private:
+  void testA()
+  {
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    cout << "testA" << time(nullptr) << endl;
+  }
+};
+
 int main(int argc, char **argv)
 {
-  ThreadImpl impl;
-  impl.start();
-  impl.join();
+  // ThreadImpl impl;
+  // impl.start();
+  // impl.join();
+
+
+  Thread thread;
+  ThreadImpl2 impl2(&thread);
+  thread.start();
+  thread.join();
   return 0;
 }
