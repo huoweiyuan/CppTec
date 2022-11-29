@@ -7,6 +7,8 @@ INCLUDE_DIRECTORIES(
         /opt/rh/devtoolset-11/root/usr/include/c++/11
         ../Lib/Tool)
 
+ADD_SUBDIRECTORY(Tec/Cmake)
+
 add_executable(zymem "")
 # 头文件路径
 TARGET_INCLUDE_DIRECTORIES(zymem PUBLIC ../Lib/Memory)
@@ -26,7 +28,7 @@ ADD_EXECUTABLE(thrd_timeout "")
 TARGET_SOURCES(thrd_timeout PUBLIC thread_timeout/thread_timeout.cc)
 TARGET_LINK_LIBRARIES(thrd_timeout PUBLIC pthread)
 
-add_executable(test1 ../Tec/继承/子类父类方法.cc)
+add_executable(test1 Tec/继承/子类父类方法.cc)
 add_executable(Deamon Deamon/Deamon.cc)
 add_executable(enumclass Cpp/enumclass.cc)
 add_executable(singleton Tool/singleton.cc)
