@@ -28,7 +28,6 @@ ADD_EXECUTABLE(thrd_timeout "")
 TARGET_SOURCES(thrd_timeout PUBLIC thread_timeout/thread_timeout.cc)
 TARGET_LINK_LIBRARIES(thrd_timeout PUBLIC pthread)
 
-add_executable(test1 Tec/继承/子类父类方法.cc)
 add_executable(Deamon Deamon/Deamon.cc)
 add_executable(enumclass Cpp/enumclass.cc)
 add_executable(singleton Tool/singleton.cc)
@@ -40,3 +39,7 @@ TARGET_LINK_LIBRARIES(thread PUBLIC pthread)
 add_executable(timer Tool/timer.cc)
 TARGET_INCLUDE_DIRECTORIES(timer PUBLIC ../Lib/Tool ../Lib/Thread)
 TARGET_LINK_LIBRARIES(timer PUBLIC pthread)
+
+
+add_executable(test1 Tec/继承/子类父类方法.cc)
+add_executable(volatile Tec/volatile/volatile.cc)
