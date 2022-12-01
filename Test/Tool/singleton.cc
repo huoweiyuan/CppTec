@@ -34,10 +34,24 @@ class C {
   }
 };
 
+class D {
+ public:
+  D():a(0) {}
+  D(int a):a(a){}
+ private:
+  int a;
+ public:
+  void show() const {
+    cout << "D " << a << endl;
+  }
+};
+
 int main(int argc, char **argv) {
   Singleton<A>::getInstance()->show();
   Singleton<B>::getInstance()->show();
   Singleton<C>::getInstance()->show();
   Singleton<C>::getInstance()->show();
+  Singleton<D>::getInstance()->show();
+  Singleton<D>::getInstance(2)->show();
   return 0;
 }
