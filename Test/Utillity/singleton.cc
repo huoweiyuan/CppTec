@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace zy::tool;
+using namespace zy::utillity;
 
 class A
 {

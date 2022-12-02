@@ -4,7 +4,7 @@
 
 #include "zyService.h"
 using namespace zy;
-using namespace tool;
+using namespace utillity;
 int test_main(int a, const char *msg) {
 //  while (1) {
     std::cout << a << " " << msg << std::endl;
