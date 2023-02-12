@@ -40,6 +40,22 @@ add_executable(timer Utillity/timer.cc)
 TARGET_INCLUDE_DIRECTORIES(timer PUBLIC ../Lib/Utillity ../Lib/Thread)
 TARGET_LINK_LIBRARIES(timer PUBLIC pthread)
 
+#add_custom_command(TARGET timer PRE_BUILD
+#        COMMAND ${CMAKE_COMMAND} -E echo Teeeeest1)
+
+# ADD_CUSTOM_TARGET(Parser echo "Creating parser")
+
+# ADD_CUSTOM_COMMAND(TARGET Parser PRE_BUILD
+#         COMMAND flex ${PROJECT_SOURCE_DIR}/Test/flex_bison/config.l -o ${PROJECT_SOURCE_DIR}/Test/flex_bison/config.yy.c
+# #        COMMAND bison -d flex_bison/config.y
+#         COMMAND ls
+#         COMMAND ${CMAKE_COMMAND} -E echo compile finish
+#         COMMENT Building flex and bison
+#         VERBATIM
+#         )
+
+# ADD_DEPENDENCIES(timer Parser)
+
 
 add_executable(test1 Tec/继承/子类父类方法.cc)
 add_executable(volatile Tec/volatile/volatile.cc)
@@ -49,3 +65,7 @@ add_executable(zyleak "")
 TARGET_INCLUDE_DIRECTORIES(zyleak PUBLIC ../Lib/Memory)
 # 源文件
 TARGET_SOURCES(zyleak PUBLIC Memory/leak_check.cc)
+
+#ADD_SUBDIRECTORY(flex_bison)
+
+add_executable(zynotify iNotify/main.cc)
