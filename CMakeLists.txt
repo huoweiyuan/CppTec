@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
+SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(CppTec)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 SET(CMAKE_BUILD_TYPE Debug)
+
 
 IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
    LINK_DIRECTORIES("/opt/rh/devtoolset-11/root/usr/lib/gcc/x86_64-redhat-linux/11/")

@@ -69,3 +69,4 @@ TARGET_SOURCES(zyleak PUBLIC Memory/leak_check.cc)
 #ADD_SUBDIRECTORY(flex_bison)
 
 add_executable(zynotify iNotify/main.cc)
+add_executable(logger_test Utillity/logger_test.cc ../Lib/Utillity/logger.cc)
