@@ -56,7 +56,7 @@ class TimerTest2 : public TimerImpl
     setTimer(3000, &TimerTest2::testC, this);
   }
 
-  int thrdRoutine(void) override
+  int thrd_routine(void) override
   {
     //
     cout << "DO MY THINGS" << endl;

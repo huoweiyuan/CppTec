@@ -1,4 +1,4 @@
-#include "zyThread.h"
+#include "zy_thread.h"
 #include <iostream>
 
 using namespace std;
@@ -14,19 +14,19 @@ class ThreadImpl : public Thread
 
   ~ThreadImpl() = default;
 
-  int thrdBegin(void) override
+  int thrd_begin(void) override
   {
     cout << "thrdBegin" << endl;
     return 0;
   }
 
-  int thrdEnd(void) override
+  int thrd_end(void) override
   {
     cout << "thrdEnd" << endl;
     return 0;
   }
 
-  int thrdRoutine(void) override
+  int thrd_routine(void) override
   {
     cout << "thrdRoutine" << endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -41,7 +41,7 @@ class ThreadImpl2
   ThreadImpl2() = default;
   ThreadImpl2(Thread *thread)
   {
-    thread->execRoutine(&ThreadImpl2::testA, this);
+    thread->exec_routine(&ThreadImpl2::testA, this);
   }
 
  private:
